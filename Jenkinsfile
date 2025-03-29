@@ -40,14 +40,14 @@ pipeline {
         stage('deploy-to-staging') {
             steps {
                 script {
-                    deploy('staging', '7002')
+                    deploy('stg', '7002')
                 }
             }
         }
         stage('tests-on-staging') {
             steps {
                 script {
-                    runTests('staging')
+                    runTests('stg')
                 }
             }
         }
