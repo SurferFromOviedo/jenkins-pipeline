@@ -99,7 +99,6 @@ def deploy(envName, port) {
 
 def runTests(envName) {
     echo "Running tests on ${envName} environment..."
-    bat 'npx pm2 delete greetings-app-' + envName + ' & EXIT /B 0'
     bat "if exist tests_${envName} rmdir /s /q tests_${envName}"
     bat "git clone %REPO_TESTS% tests_${envName}"
     dir("tests_${envName}") {
