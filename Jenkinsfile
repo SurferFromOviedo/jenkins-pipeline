@@ -105,6 +105,6 @@ def runTests(envName) {
          echo "Installing npm dependencies for tests..."
          bat "npm install"
          echo "Executing tests for ${envName} environment..."
-         bat "npm run greetings greetings_${envName}"
+         bat "npm run greetings -- greetings_${envName}"
      }
 }
