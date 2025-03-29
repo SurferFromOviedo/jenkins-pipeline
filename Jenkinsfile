@@ -86,6 +86,7 @@ pipeline {
 
 def deploy(envName, port) {
     echo "Deploying to ${envName} environment..."
+    bat 'if exist app_dev rmdir /s /q app_dev'
     bat "git clone %REPO_APP% app_${envName}"
     dir("app_${envName}") {
         echo "Stopping existing service for ${envName} environment..."
