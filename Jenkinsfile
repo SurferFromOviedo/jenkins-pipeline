@@ -101,8 +101,8 @@ def runTests(envName) {
     echo "Running tests on ${envName} environment..."
     bat "if exist tests_${envName} rmdir /s /q tests_${envName}"
     bat "git clone %REPO_TESTS% tests_${envName}"
-     cd course-js-api-framework
-        call npm install 
-        echo "Running the greetings test script..."
-        npm run greetings greetings_${envName}
+    bat "cd course-js-api-framework"
+    bat "call npm install"
+    echo "Running the greetings test script..."
+    bat "npm run greetings greetings_${envName}"
 }
