@@ -86,6 +86,7 @@ pipeline {
 
 def deploy(envName, port) {
     echo "Deploying to ${envName} environment..."
+    bat 'npx pm2 delete greetings-app-' + envName + ' & EXIT /B 0'
     bat "if exist app_${envName} rmdir /s /q app_${envName}"
     bat "git clone %REPO_APP% app_${envName}"
     dir("app_${envName}") {
@@ -98,6 +99,7 @@ def deploy(envName, port) {
 
 def runTests(envName) {
     echo "Running tests on ${envName} environment..."
+    bat 'npx pm2 delete greetings-app-' + envName + ' & EXIT /B 0'
     bat "if exist tests_${envName} rmdir /s /q tests_${envName}"
     bat "git clone %REPO_TESTS% tests_${envName}"
     dir("tests_${envName}") {
