@@ -101,7 +101,10 @@ def runTests(envName) {
     echo "Running tests on ${envName} environment..."
     bat "if exist tests_${envName} rmdir /s /q tests_${envName}"
     bat "git clone %REPO_TESTS% tests_${envName}"
-    bat "call npm install"
-    echo "Running the greetings test script..."
-    bat "npm run greetings greetings_${envName}"
+    dir("tests_${envName}") {
+         echo "Installing npm dependencies for tests..."
+         bat "npm install"
+         echo "Executing tests for ${envName} environment..."
+         bat "npm run greetings greetings_${envName}"
+     }
 }
