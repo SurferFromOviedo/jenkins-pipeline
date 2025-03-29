@@ -9,6 +9,8 @@ pipeline {
     stages {
         stage('install-pip-deps') {
             steps {
+                echo 'Cleaning previous application directory (if exists)...'
+                bat 'if exist app rmdir /s /q app'
                 echo 'Cloning repository for application code...'
                 bat 'git clone %REPO_APP% app'
                 dir('app') {
